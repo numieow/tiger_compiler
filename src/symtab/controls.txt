@@ -1,0 +1,23 @@
+-division par 0                                                                                         N2L FINI
+type oparateur binaire                                                                                  thibault
+type comparaison                                                                                        thibault          
+type declaration                                                                                        Maxime on it
+type des tailles de array                                                                               Maxime FINI (encore gestion des types alias)
+type des indices des arrays à l'affectation (je sais pas hein)                                          Maxime FINI
+verifier si symbol existe                                                                               Nathan FINI
+affectation : verif que le type de la var correspondent au type de la fonction                          Nathan FINI
+verif que var et func n'ont pas les mm noms                                                             N2L FINI
+boucle for verif entier                                                                                 Maxime FINI
+
+fonction :
+    verif que la fonction est bien define                                                               NATHAN FINI
+    type de retour                                                                                      NATHAN FINI
+    type des arguments,verif ordre des params                                                           N2L FINI
+    verif que l'entrée existe                                                                           NATHAN FINI
+
+
+Check si un record a pas 2 field de même nom                                                            Maxime FINI
+Check si la syntaxe de la définition d'un record est bonne                                              Maxime ON IT
+
+Check si une fonction a pas 2 arguments de même nom                                                     N2L FINI
+Check à la création des arrays, sur les types (le type doit être un arrayType)                          Maxime FINI

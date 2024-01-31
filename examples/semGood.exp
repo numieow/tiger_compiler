@@ -1,0 +1,6 @@
+let
+  function one() : int = 1
+  function one() : int = 1
+in
+  one() = one()
+end

@@ -1,0 +1,10 @@
+let
+    var N:=0
+    var M:=5
+    function test() =
+        if M = 5 then
+        N:=9
+    
+in
+    test()
+    end

@@ -1,0 +1,11 @@
+let
+    var N := 0
+    var M := 0
+    var P := 0
+
+in
+
+    if N=0 then
+        if M=0 then
+            P:=10
+end

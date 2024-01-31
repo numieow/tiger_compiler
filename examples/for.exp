@@ -1,0 +1,60 @@
+let 
+    var N := 2;
+    var M := 3;
+    var P := 3;
+
+in
+
+    for i:=0 to P
+        do
+            M:=M*N
+
+end
+
+/*
+
+               ;Enter  Program
+HEAP_BASE      EQU     0x10000
+               MOV     R11, R13 ;Mise à jour du Base Pointer
+               MOV     R12, #HEAP_BASE ;On met l'adresse du tas dans R12
+               MOV     R0, #2 ;Déclaration de la variable N
+               STMFD   R13!,{R0} ;Ajout de la variable à la pile
+               MOV     R0, #3 ;Déclaration de la variable M
+               STMFD   R13!,{R0} ;Ajout de la variable à la pile
+               MOV     R0, #3 ;Déclaration de la variable P
+               STMFD   R13!,{R0} ;Ajout de la variable à la pile
+               MOV     R0, #0 ;Déclaration de la variable i
+               STMFD   R13!,{R0} ;Ajout de la variable à la pile
+               B       for1
+for_end1       
+               END
+               ;Exit   Program
+
+
+
+for1           
+               LDR     R0, [R11, #-16] ;On charge la valeur de i dans un registre
+               LDR     R1, [R11, #-12] ;On charge la valeur de P dans un registre
+               CMP     R0, R1 ;On compare les deux opérandes (égalité)
+               MOVEQ   R0, #1 ;Si elles sont égales, on passe le registre résultat à 1
+               MOVNE   R0, #0 ;Sinon, on passe le registre résultat à 0
+               CMP     R0, #1
+               BEQ     for_end1
+               LDR     R0, [R11, #-8] ;On charge la valeur de M dans un registre
+               LDR     R1, [R11, #-4] ;On charge la valeur de N dans un registre
+               MOV     R2, #0;Initialisation du compteur
+               BL      multiply_loop1 ;On entre dans la boucle multiplicative
+suite1         ;On     passe à la suite
+               MOV     R0, R2 ;On récupère le résultat
+               STR     R0, [R11, #-8] ;Sauvegarde du résultat
+               LDR     R1, [R11, #-16] ;On charge la valeur de i dans un registre
+               MOV     R2, #1 ;On charge la valeur de l'entier dans un registre
+               ADD     R1, R1, R2 ;Addition
+               STR     R1, [R11, #-16] ;Sauvegarde du résultat
+               B       for1
+multiply_loop1 ;Début  de la boucle multiplicative
+               ADD     R2, R2, R0 ;i-ème addition de la multiplication
+               SUBS    R1, R1, #1 ;Décrémentation du compteur
+               BNE     multiply_loop1 ;Si le compteur n'est pas égal à 0, on recommence
+               B       suite1 ;Sinon on passe à la suite du programme
+*/

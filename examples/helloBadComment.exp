@@ -1,0 +1,3 @@
+let function hello() = print("Hello, World!\n") /* commentaire */
+in hello() end
+/* encore un autre commentaire

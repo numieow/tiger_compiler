@@ -1,0 +1,9 @@
+let
+    var N := 1
+    var P := 5
+in
+    if N = 1 then
+        P := 3;
+    else
+        P := 6;
+end

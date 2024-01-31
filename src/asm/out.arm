@@ -1,0 +1,43 @@
+
+;Enter Program 
+HEAP_BASE	 EQU 0x10000
+MOV R11, R13 ;Mise à jour du Base Pointer
+MOV R12, #HEAP_BASE ;On met l'adresse du tas dans R12
+MOV	R0, #0 ;Déclaration de la variable N 
+STMFD	R13!,{R0} ;Ajout de la variable à la pile
+MOV	R0, #5 ;Déclaration de la variable M 
+STMFD	R13!,{R0} ;Ajout de la variable à la pile
+LDR R0, [R11, #0] ;On charge la valeur de  dans un registre
+BL testfunction ; Call function test
+endtestfunction
+END
+;Exit Program 
+
+
+
+testfunction
+STMFD r13! , {r0-r10,r11,LR}
+MOV r11, r13
+;On calcule la condition du if
+ldr R11,[r13,#44] ; on va ds le bloc au dessus
+LDR R0, [R11, #-8] ;On charge la valeur de M dans un registre
+ADD R11,R13,#0 ; on revient ds le bloc actuel
+MOV R1, #5 ;On charge la valeur de l'entier dans un registre
+CMP R0, R1 ;On compare les deux opérandes (égalité)
+MOVEQ R0, #1 ;Si elles sont égales, on passe le registre résultat à 1
+MOVNE R0, #0 ;Sinon, on passe le registre résultat à 0
+CMP	R0, #1
+BEQ if2
+BNE suiteif2
+suiteif2
+MOV r13, r11
+LDMFD r13!, {r0-r10,r11,PC}
+B endtestfunction
+
+
+if2
+MOV R1, #9 ;On charge la valeur de l'entier dans un registre
+ldr R11,[r13,#44] ; on va ds le bloc au dessus
+STR R1, [R11, #-4] ;Sauvegarde du résultat
+ADD R11,R13,#0 ; on revient ds le bloc actuel
+B suiteif2

@@ -1,0 +1,142 @@
+let
+var M:=5
+var N:=1
+var P:=2
+var A:=3
+var B:="Hello World"
+
+function add(x : int, y : int, z: int) =(
+
+ for i:=0 to 10
+  do
+   if i<5
+    then(
+     x:=y+x+A;
+     A:=A+1)
+
+
+ )
+
+in
+add(M,N,P)
+end
+
+/* 
+
+               ;Enter  Program
+HEAP_BASE      EQU     0x10000
+               MOV     R11, R13 ;Mise à jour du Base Pointer
+               MOV     R12, #HEAP_BASE ;On met l'adresse du tas dans R12
+               MOV     R0, #5 ;Déclaration de la variable M
+               STMFD   R13!,{R0} ;Ajout de la variable à la pile
+               MOV     R0, #1 ;Déclaration de la variable N
+               STMFD   R13!,{R0} ;Ajout de la variable à la pile
+               MOV     R0, #2 ;Déclaration de la variable P
+               STMFD   R13!,{R0} ;Ajout de la variable à la pile
+               MOV     R0, #3 ;Déclaration de la variable A
+               STMFD   R13!,{R0} ;Ajout de la variable à la pile
+               STMFD   R13!, {R12} ;Sauvegarde de la base actuelle du tas
+               MOV     R0, #72 ;On met la valeur du caractère H dans R0
+               STR     R0, [R12] ;On met la valeur dans le tas
+               ADD     R12, R12, #-4 ;On incrémente la base du tas
+               MOV     R0, #101 ;On met la valeur du caractère e dans R0
+               STR     R0, [R12] ;On met la valeur dans le tas
+               ADD     R12, R12, #-4 ;On incrémente la base du tas
+               MOV     R0, #108 ;On met la valeur du caractère l dans R0
+               STR     R0, [R12] ;On met la valeur dans le tas
+               ADD     R12, R12, #-4 ;On incrémente la base du tas
+               MOV     R0, #108 ;On met la valeur du caractère l dans R0
+               STR     R0, [R12] ;On met la valeur dans le tas
+               ADD     R12, R12, #-4 ;On incrémente la base du tas
+               MOV     R0, #111 ;On met la valeur du caractère o dans R0
+               STR     R0, [R12] ;On met la valeur dans le tas
+               ADD     R12, R12, #-4 ;On incrémente la base du tas
+               MOV     R0, #32 ;On met la valeur du caractère dans R0
+               STR     R0, [R12] ;On met la valeur dans le tas
+               ADD     R12, R12, #-4 ;On incrémente la base du tas
+               MOV     R0, #87 ;On met la valeur du caractère W dans R0
+               STR     R0, [R12] ;On met la valeur dans le tas
+               ADD     R12, R12, #-4 ;On incrémente la base du tas
+               MOV     R0, #111 ;On met la valeur du caractère o dans R0
+               STR     R0, [R12] ;On met la valeur dans le tas
+               ADD     R12, R12, #-4 ;On incrémente la base du tas
+               MOV     R0, #114 ;On met la valeur du caractère r dans R0
+               STR     R0, [R12] ;On met la valeur dans le tas
+               ADD     R12, R12, #-4 ;On incrémente la base du tas
+               MOV     R0, #108 ;On met la valeur du caractère l dans R0
+               STR     R0, [R12] ;On met la valeur dans le tas
+               ADD     R12, R12, #-4 ;On incrémente la base du tas
+               MOV     R0, #100 ;On met la valeur du caractère d dans R0
+               STR     R0, [R12] ;On met la valeur dans le tas
+               ADD     R12, R12, #-4 ;On incrémente la base du tas
+               MOV     R0, #128 ;On met la valeur du caractère de fin de string dans R0
+               STR     R0, [R12] ;On met la valeur dans le tas
+               ADD     R12, R12, #-4 ;On incrémente la base du tas
+               LDR     R0, [R11, #-4] ;On charge la valeur de M dans un registre
+               LDR     R1, [R11, #-8] ;On charge la valeur de N dans un registre
+               LDR     R2, [R11, #-12] ;On charge la valeur de P dans un registre
+               BL      addfunction ; Call function add
+endaddfunction 
+               END
+               ;Exit   Program
+
+
+
+addfunction    
+               STMFD   r13! , {r0-r10,r11,LR}
+               MOV     r11, r13
+               MOV     R0, #0 ;Déclaration de la variable i
+               STMFD   R13!,{R0} ;Ajout de la variable à la pile
+               B       for2
+for_end2       
+               MOV     R0, #0 ;On charge la valeur de l'entier dans un registre
+               STR     R0, [R11, #-4] ;Sauvegarde du résultat
+               MOV     r13, r11
+               LDMFD   r13!, {r0-r10,r11,PC}
+               B       endaddfunction
+
+
+for2           
+               LDR     R0, [R11, #-4] ;On charge la valeur de i dans un registre
+               MOV     R1, #10 ;On charge la valeur de l'entier dans un registre
+               CMP     R0, R1 ;On compare les deux opérandes (égalité)
+               MOVEQ   R0, #1 ;Si elles sont égales, on passe le registre résultat à 1
+               MOVNE   R0, #0 ;Sinon, on passe le registre résultat à 0
+               CMP     R0, #1
+               BEQ     for_end2
+               ;On     calcule la condition du if
+               LDR     R0, [R11, #-4] ;On charge la valeur de i dans un registre
+               MOV     R1, #5 ;On charge la valeur de l'entier dans un registre
+               SUBS    R0, R0,R1 ;On soustrait les deux opérandes pour tester (<)
+               MOVLT   R0, #1 ;Si le résultat est < 0, on passe le registre résultat à 1
+               MOVGE   R0, #0 ;Sinon, on passe le registre résultat à 0
+               CMP     R0, #1
+               BEQ     if3
+               BNE     suiteif3
+suiteif3       
+               LDR     R2, [R11, #-4] ;On charge la valeur de i dans un registre
+               MOV     R3, #1 ;On charge la valeur de l'entier dans un registre
+               ADD     R2, R2, R3 ;Addition
+               STR     R2, [R11, #-4] ;Sauvegarde du résultat
+               B       for2
+
+
+if3            
+               LDR     R2, [R11, #4] ;On charge la valeur de y dans un registre
+               LDR     R3, [R11, #0] ;On charge la valeur de x dans un registre
+               ldr     R11,[r13,#48] ; on va ds le bloc au dessus
+               LDR     R4, [R11, #-16] ;On charge la valeur de A dans un registre
+               ADD     R11,R13,#4 ; on revient ds le bloc actuel
+               ADD     R3, R3, R4 ;Addition
+               ADD     R2, R2, R3 ;Addition
+               STR     R2, [R11, #0] ;Sauvegarde du résultat
+               ldr     R11,[r13,#48] ; on va ds le bloc au dessus
+               LDR     R0, [R11, #-16] ;On charge la valeur de A dans un registre
+               ADD     R11,R13,#4 ; on revient ds le bloc actuel
+               MOV     R1, #1 ;On charge la valeur de l'entier dans un registre
+               ADD     R0, R0, R1 ;Addition
+               ldr     R11,[r13,#48] ; on va ds le bloc au dessus
+               STR     R0, [R11, #-16] ;Sauvegarde du résultat
+               ADD     R11,R13,#4 ; on revient ds le bloc actuel
+               B       suiteif3
+*/

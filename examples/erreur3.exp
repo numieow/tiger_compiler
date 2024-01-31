@@ -1,0 +1,5 @@
+let
+  function mult(x: int, y: int): int = x y
+in
+  mult(2, 3)
+end

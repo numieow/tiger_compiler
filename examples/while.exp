@@ -1,0 +1,53 @@
+let
+    var M := 1;
+    var N := 5;
+    var P := 4;
+
+in
+
+    while P>0
+        do(
+            M := M+N;
+            P := P-1
+
+        )
+        end
+    
+/*
+
+;Enter Program 
+HEAP_BASE	 EQU 0x10000
+MOV R11, R13 ;Mise à jour du Base Pointer
+MOV R12, #HEAP_BASE ;On met l'adresse du tas dans R12
+MOV	R0, #1 ;Déclaration de la variable M 
+STMFD	R13!,{R0} ;Ajout de la variable à la pile
+MOV	R0, #5 ;Déclaration de la variable N 
+STMFD	R13!,{R0} ;Ajout de la variable à la pile
+MOV	R0, #4 ;Déclaration de la variable P 
+STMFD	R13!,{R0} ;Ajout de la variable à la pile
+; 	 calcule la condition du while
+B while_start1
+while_end1
+END
+;Exit Program 
+
+
+
+while_start1
+LDR R0, [R11, #-12] ;On charge la valeur de P dans un registre
+MOV R1, #0 ;On charge la valeur de l'entier dans un registre
+SUBS R0, R0, R1 ;On soustrait les deux opérandes pour tester (>)
+MOVGT R0, #1 ;Si le résultat est > 0, on passe le registre résultat à 1
+MOVLE R0, #0 ;Sinon, on passe le registre résultat à 0
+CMP	R0, #1
+BNE while_end1
+LDR R1, [R11, #-4] ;On charge la valeur de M dans un registre
+LDR R2, [R11, #-8] ;On charge la valeur de N dans un registre
+ADD R1, R1, R2 ;Addition
+STR R1, [R11, #-4] ;Sauvegarde du résultat
+LDR R0, [R11, #-12] ;On charge la valeur de P dans un registre
+MOV R1, #1 ;On charge la valeur de l'entier dans un registre
+SUB R0, R0, R1 ;Soustraction
+STR R0, [R11, #-12] ;Sauvegarde du résultat
+B while_start1
+*/

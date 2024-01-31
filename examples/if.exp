@@ -1,0 +1,53 @@
+let
+  var N3 := 2
+  var N4 := 5
+  var N := 0
+in
+  if (N3 - 2) = 0 & (N4 + 2)> 3 then
+    N := 4
+end
+
+/*
+
+;Enter Program 
+HEAP_BASE	 EQU 0x10000
+MOV R11, R13 ;Mise à jour du Base Pointer
+MOV R12, #HEAP_BASE ;On met l'adresse du tas dans R12
+MOV	R0, #2 ;Déclaration de la variable N3 
+STMFD	R13!,{R0} ;Ajout de la variable à la pile
+MOV	R0, #5 ;Déclaration de la variable N4 
+STMFD	R13!,{R0} ;Ajout de la variable à la pile
+MOV	R0, #0 ;Déclaration de la variable N 
+STMFD	R13!,{R0} ;Ajout de la variable à la pile
+;On calcule la condition du if
+LDR R0, [R11, #-8] ;On charge la valeur de N4 dans un registre
+MOV R1, #2 ;On charge la valeur de l'entier dans un registre
+ADD R0, R0, R1 ;Addition
+LDR R1, [R11, #-4] ;On charge la valeur de N3 dans un registre
+MOV R2, #2 ;On charge la valeur de l'entier dans un registre
+SUB R1, R1, R2 ;Soustraction
+MOV R3, #0 ;On charge la valeur de l'entier dans un registre
+CMP R3, R0 ;On compare les deux opérandes (&, on part du principe que les deux opérandes sont bien égales à 0 ou 1)
+MOVEQ R3, #1 ;Si les deux opérandes sont égales, on passe le registre résultat à 1
+MOVNE R3, #0 ;Sinon on passe le registre résultat à 0
+MOV R4, #3 ;On charge la valeur de l'entier dans un registre
+SUBS R3, R3, R4 ;On soustrait les deux opérandes pour tester (>)
+MOVGT R3, #1 ;Si le résultat est > 0, on passe le registre résultat à 1
+MOVLE R3, #0 ;Sinon, on passe le registre résultat à 0
+CMP R1, R3 ;On compare les deux opérandes (égalité)
+MOVEQ R1, #1 ;Si elles sont égales, on passe le registre résultat à 1
+MOVNE R1, #0 ;Sinon, on passe le registre résultat à 0
+CMP	R1, #1
+BEQ if1
+BNE suiteif1
+suiteif1
+END
+;Exit Program 
+
+
+
+if1
+MOV R3, #4 ;On charge la valeur de l'entier dans un registre
+STR R3, [R11, #-12] ;Sauvegarde du résultat
+B suiteif1
+*/

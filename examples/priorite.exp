@@ -1,0 +1,5 @@
+let
+  var N := 2
+in
+  4+N*2 < 1 | N/2 +3
+end

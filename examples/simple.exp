@@ -1,0 +1,10 @@
+let
+var A := 1
+var N := 3
+
+in
+
+A:=A+N
+
+
+end

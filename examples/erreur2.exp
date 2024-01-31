@@ -1,0 +1,5 @@
+let
+  greet(name: string) = (print("Hi, "); print(name); print("!\n"))
+in
+  greet("Joe")
+end

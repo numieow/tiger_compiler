@@ -1,0 +1,5 @@
+let
+  var N := 2
+in
+  N + 2 = (4 = N*2)
+end

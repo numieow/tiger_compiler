@@ -1,0 +1,67 @@
+let
+var N := 8
+var m := "mot"
+type intArray = array of int
+type stringArray = array of string
+var row := intArray [ N ] of 0
+var col := intArray [ N ] of 0
+var mot := stringArray [ N+row[2]-1 ] of "entier" 
+var str := stringArray [ N+row ] of m 
+type rec = {val : int}
+type bonRec = {val : int}
+
+var record := bonRec {val = 42,  val  = "string"}
+var bonRecord := bonRec {val = 42}
+
+function printboard()  =
+(
+        for i := 0 to N-1
+            do 
+                (for j := 0 to N-1
+                    do 
+                        print(if col[op]:=j then "O" else ".");
+                        print("\n")
+                );
+print("\n")
+)    
+
+function try(c:int) =
+if c=N 
+    then printboard()
+    else 
+    for r := 0 to N-1
+        do 
+        if row[r]=0 & diag1[r+c]=0 
+            then (
+                row[r] := 1/0; diag1[r+c] := 1/mot[1]; 
+                diag2[r+7-c] := 1; col[c] := N + row;
+                try(c+1);
+                row[r] := 0; diag1[r+c] := 0;
+                diag2[r+7-c] := 0
+            )
+
+function mot() : int = (
+    for r := 0 to N-1 do print("oui")
+) 
+
+function mot2(val : int) : int = (
+    for r := m to N-1 do print("oui")
+) 
+
+function int() : string = "oui"
+var mots := int()
+var mots2 := int(N)
+var mot2 := true()
+
+function roronoa(i:int) = 
+if s < "table" | 1 + row[2] * i    
+    then printboard()
+    else 
+    if mot <> row | row = col | mot[N-1] = "zoro"  
+        then (
+            row[0] := row[1] < str[1];  
+            row[1] := str[1] / row[2] 
+        )
+
+in 
+    try(row) end
